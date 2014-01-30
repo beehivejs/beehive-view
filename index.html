@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=11" />
+  <!-- Set the viewport width to device width for mobile -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>BeeHive.View DEMO</title>
+  <script src="lib/beehive/view.js"></script>
+</head>
+
+<body>
+  <h2 id="heading1">Test heading One</h2>
+  <h2 id="heading2">Test heading Two</h2>
+  
+  <p>Create an instance of BeeHive.View and pass in the top level element:</p>
+
+<pre><code>
+  var view1 = new BeeHive.View(document.getElementById('heading1'));
+  var view2 = new BeeHive.View(document.getElementById('heading2'));
+</code></pre>
+
+  <p>Subscribe to certain events that fire on the view object:</p>
+  
+<pre><code>
+  function toggle_visibility() {
+    var is_visible = this.get('visibility');
+    this.element.style.visibility = is_visible ? 'visible' : 'hidden';
+  }
+  view1.on('visibility:change', toggle_visibility);
+</code></pre>
+  
+  <p>Profit!</p>
+  
+<pre><code>
+  view1.set('visibility', false);
+  view2.set('visibility', false);
+  view1.set('visibility', true);
+</code></pre>
+  
+  <script>
+  (function() {
+    var view1 = new BeeHive.View(document.getElementById('heading1'));
+    var view2 = new BeeHive.View(document.getElementById('heading2'));
+
+    function toggle_visibility() {
+      var is_visible = this.get('visibility');
+      this.element.style.visibility = is_visible ? 'visible' : 'hidden';
+    }
+    
+    view1.on('visibility:change', toggle_visibility);
+    view2.on('visibility:change', toggle_visibility);
+
+    /*
+      Export the view to the global namespace so
+      that we can play around with it in the console.
+    */
+    window.view1 = view1;
+    window.view2 = view2;
+  })();
+  </script>
+</body>
+</html>
