@@ -44,4 +44,4 @@ Event names are conventional, for example when a `visibility` attribute changes,
 * Implement `View#off`.
 * Make it AMD compliant.
 * Create NPM package.
-* Create minified version just for comedy value.
+* ~~Create minified version just for comedy value.~~ It's 352 bytes!
