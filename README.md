@@ -31,6 +31,10 @@ view1.set('visibility', true);
 
 Event names are conventional, for example when a `visibility` attribute changes, the `visibility:change` event fires.
 
+### Demo
+
+Clone the repo and open `demo.html` that has the view objects mentioned above already in place so that you can play with them using your browser's console.
+
 ### Features
 
 * Has no dependencies, no, not even jQuery.
@@ -42,6 +46,7 @@ Event names are conventional, for example when a `visibility` attribute changes,
 
 * Write tests.
 * Implement `View#off`.
-* Make it AMD compliant.
+* Make it AMD compliant
 * Create NPM package.
 * ~~Create minified version just for comedy value.~~ It's 352 bytes!
+* See if alternative getter/setter methods would be more suitable over time (Benchmarks at http://jsperf.com/getter-setter)
