@@ -50,3 +50,7 @@ Clone the repo and open `demo.html` that has the view objects mentioned above al
 * Create NPM package.
 * ~~Create minified version just for comedy value.~~ It's 352 bytes!
 * See if alternative getter/setter methods would be more suitable over time (Benchmarks at http://jsperf.com/getter-setter)
+
+
+[![Bitdeli Badge](https://d2weczhvl823v0.cloudfront.net/liquid/beehive-view/trend.png)](https://bitdeli.com/free "Bitdeli Badge")
+
