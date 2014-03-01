@@ -1,0 +1,96 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <title>Beehive.View by liquid</title>
+
+    <link rel="stylesheet" href="stylesheets/styles.css">
+    <link rel="stylesheet" href="stylesheets/pygment_trac.css">
+    <script src="javascripts/scale.fix.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+
+    <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+    <div class="wrapper">
+      <header>
+        <h1>Beehive.View</h1>
+        <p>Simple view bindings</p>
+        <p class="view"><a href="https://github.com/liquid/beehive-view">View the Project on GitHub <small>liquid/beehive-view</small></a></p>
+        <ul>
+          <li><a href="https://github.com/liquid/beehive-view/zipball/master">Download <strong>ZIP File</strong></a></li>
+          <li><a href="https://github.com/liquid/beehive-view/tarball/master">Download <strong>TAR Ball</strong></a></li>
+          <li><a href="https://github.com/liquid/beehive-view">View On <strong>GitHub</strong></a></li>
+        </ul>
+      </header>
+      <section>
+        <h1>
+<a name="beehiveview" class="anchor" href="#beehiveview"><span class="octicon octicon-link"></span></a>BeeHive.View</h1>
+
+<p>Simple view bindings.</p>
+
+<h3>
+<a name="how-to-use" class="anchor" href="#how-to-use"><span class="octicon octicon-link"></span></a>How to use</h3>
+
+<p>Create an instance of <code>BeeHive.View</code> and pass in the top level element:</p>
+
+<div class="highlight highlight-javascript"><pre><span class="kd">var</span> <span class="nx">view1</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">BeeHive</span><span class="p">.</span><span class="nx">View</span><span class="p">(</span><span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s1">'heading1'</span><span class="p">));</span>
+<span class="kd">var</span> <span class="nx">view2</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">BeeHive</span><span class="p">.</span><span class="nx">View</span><span class="p">(</span><span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s1">'heading2'</span><span class="p">));</span>
+</pre></div>
+
+<p>Subscribe to certain events that fire on the view object when attributes change:</p>
+
+<div class="highlight highlight-javascript"><pre><span class="kd">function</span> <span class="nx">toggle_visibility</span><span class="p">()</span> <span class="p">{</span>
+  <span class="kd">var</span> <span class="nx">is_visible</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s1">'visibility'</span><span class="p">);</span>
+  <span class="k">this</span><span class="p">.</span><span class="nx">element</span><span class="p">.</span><span class="nx">style</span><span class="p">.</span><span class="nx">visibility</span> <span class="o">=</span> <span class="nx">is_visible</span> <span class="o">?</span> <span class="s1">'visible'</span> <span class="o">:</span> <span class="s1">'hidden'</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="nx">view1</span><span class="p">.</span><span class="nx">on</span><span class="p">(</span><span class="s1">'visibility:change'</span><span class="p">,</span> <span class="nx">toggle_visibility</span><span class="p">);</span>
+</pre></div>
+
+<p>See the DOM elements react automatically when attributes change:</p>
+
+<div class="highlight highlight-javascript"><pre><span class="nx">view1</span><span class="p">.</span><span class="nx">set</span><span class="p">(</span><span class="s1">'visibility'</span><span class="p">,</span> <span class="kc">false</span><span class="p">);</span>
+<span class="nx">view2</span><span class="p">.</span><span class="nx">set</span><span class="p">(</span><span class="s1">'visibility'</span><span class="p">,</span> <span class="kc">false</span><span class="p">);</span>
+<span class="nx">view1</span><span class="p">.</span><span class="nx">set</span><span class="p">(</span><span class="s1">'visibility'</span><span class="p">,</span> <span class="kc">true</span><span class="p">);</span>
+</pre></div>
+
+<p>Event names are conventional, for example when a <code>visibility</code> attribute changes, the <code>visibility:change</code> event fires.</p>
+
+<h3>
+<a name="demo" class="anchor" href="#demo"><span class="octicon octicon-link"></span></a>Demo</h3>
+
+<p>Clone the repo and open <code>demo.html</code> that has the view objects mentioned above already in place so that you can play with them using your browser's console.</p>
+
+<h3>
+<a name="features" class="anchor" href="#features"><span class="octicon octicon-link"></span></a>Features</h3>
+
+<ul>
+<li>Has no dependencies, no, not even jQuery.</li>
+<li>It’s more lightweight than Backbone, Angular, or [insertAnyOtherFrontendFrameWork]</li>
+<li>It’s currently less than 40 lines long.</li>
+<li>It’s been written on a train, and trains are cool.</li>
+</ul><h3>
+<a name="todos" class="anchor" href="#todos"><span class="octicon octicon-link"></span></a>Todos</h3>
+
+<ul>
+<li>Write tests.</li>
+<li>Implement <code>View#off</code>.</li>
+<li>Make it AMD compliant</li>
+<li>Create NPM package.</li>
+<li>
+<del>Create minified version just for comedy value.</del> It's 352 bytes!</li>
+<li>See if alternative getter/setter methods would be more suitable over time (Benchmarks at <a href="http://jsperf.com/getter-setter">http://jsperf.com/getter-setter</a>)</li>
+</ul><p><a href="https://bitdeli.com/free" title="Bitdeli Badge"><img src="https://d2weczhvl823v0.cloudfront.net/liquid/beehive-view/trend.png" alt="Bitdeli Badge"></a></p>
+      </section>
+    </div>
+    <footer>
+      <p>Project maintained by <a href="https://github.com/liquid">liquid</a></p>
+      <p>Hosted on GitHub Pages &mdash; Theme by <a href="https://github.com/orderedlist">orderedlist</a></p>
+    </footer>
+    <!--[if !IE]><script>fixScale(document);</script><![endif]-->
+    
+  </body>
+</html>
